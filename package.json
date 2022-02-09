@@ -7,7 +7,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.25"
+    "@techassi/vue-youtube-iframe": "^1.0.6",
+    "video.js": "^7.17.0",
+    "videojs-youtube": "^2.6.1",
+    "vue": "^3.2.25",
+    "vue-youtube-embed": "^2.2.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",
