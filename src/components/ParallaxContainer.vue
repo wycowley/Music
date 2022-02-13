@@ -27,9 +27,9 @@ document.addEventListener("scroll", scrollLogic);
 </template>
 <style scoped>
 div {
-    width: 25%;
-    height: 50vh;
-    background-color: rgb(240, 240, 240);
+    width: auto;
+    height: auto;
+    /* background-color: rgb(240, 240, 240); */
     position: relative;
 }
 </style>
