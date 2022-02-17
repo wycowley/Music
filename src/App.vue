@@ -2,9 +2,18 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import { ref } from "vue";
+import musicData from "./Data.json";
 import Container from "./components/Container.vue";
 
 const videoId = ref("AtwasYkNRlc");
+const data = ref(musicData);
+
+// {
+// "name": "",
+// "description": "",
+// "videoId": "",
+// "date": ""
+// }
 </script>
 
 <template>
@@ -13,8 +22,7 @@ const videoId = ref("AtwasYkNRlc");
         <p>I've been playing piano for over 12 years now, and have been teaching for around 4 years at PPA. Here's a timeline of some of the music I have played over my piano journey.</p>
     </div>
     <div class="total-container">
-        <container videoId="zltBrEg72Ng"> </container>
-        <container videoId="AtwasYkNRlc"> </container>
+        <container v-for="object in data" :key="object.videoId" :videoId="object.videoId" :name="object.name" :description="object.description" :date="object.date"> </container>
     </div>
 </template>
 
@@ -26,8 +34,8 @@ const videoId = ref("AtwasYkNRlc");
     width: 100vw;
 }
 .intro {
-    width: 80vw;
-    margin-left: 10vw;
+    width: 50vw;
+    margin-left: 25vw;
 }
 .intro > h1 {
     font-size: 4rem;
@@ -49,5 +57,6 @@ iframe {
     height: 100%;
     background-color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 </style>

@@ -6,6 +6,15 @@ const props = defineProps({
     videoId: {
         type: String,
     },
+    date: {
+        type: String,
+    },
+    name: {
+        type: String,
+    },
+    description: {
+        type: String,
+    },
 });
 // zltBrEg72Ng
 </script>
@@ -17,11 +26,11 @@ const props = defineProps({
         <!-- All Text Elements -->
         <div class="all-text">
             <div class="title">
-                <p>— August 2021 to January 2022 —</p>
-                <h1>Rondo in D Major, K. 485</h1>
+                <p>— {{ props.date }} —</p>
+                <h1>{{ props.name }}</h1>
             </div>
             <div class="description">
-                <h2>Written by Mozart in 1786, this fun and fast piece has a lot of trills, fast scales, and a distinct lack of pedal.</h2>
+                <h2>{{ props.description }}</h2>
             </div>
         </div>
     </div>

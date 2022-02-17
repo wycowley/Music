@@ -46,18 +46,26 @@ function onPlayerStateChange(event) {
 const gradient = computed(() => {
     return `linear-gradient(to right, #000000 0%, #000000 ${progress.value}%, #f0f0f0 ${progress.value}%, #f0f0f0 100%)`;
 });
-function changePlay() {
-    if (playing.value == true) {
-        player.value.pauseVideo();
-        playing.value = false;
-    } else {
-        player.value.playVideo();
-        playing.value = true;
-    }
-}
+// function changePlay() {
+//     if (playing.value == true) {
+//         player.value.pauseVideo();
+//         playing.value = false;
+//     } else {
+//         player.value.playVideo();
+//         playing.value = true;
+//     }
+// }
 function checkProgress() {
     console.log(player.value.getCurrentTime());
     progress.value = (player.value.getCurrentTime() / player.value.getDuration()) * 100;
+}
+function seek(e) {
+    let target = e.target;
+    console.log(target.getBoundingClientRect());
+    let percent = (e.clientX - target.getBoundingClientRect().x) / target.getBoundingClientRect().width;
+    player.value.seekTo(player.value.getDuration() * percent);
+    progress.value = percent * 100;
+    console.log(percent);
 }
 
 onMounted(() => {
@@ -67,14 +75,19 @@ onMounted(() => {
 <template>
     <div class="video-container" :style="{ aspectRatio: props.horizontal ? 16 / 9 : 9 / 16 }">
         <div ref="video" :id="videoId">Test</div>
-        <div :style="{ backgroundImage: gradient }" class="progressBar"></div>
+        <div :style="{ backgroundImage: gradient }" class="progressBar" @click="seek"></div>
         <!-- <button @click="changePlay">{{ playing ? "Pause" : "Play" }}</button> -->
     </div>
 </template>
 <style scoped>
 .progressBar {
-    height: 5px;
-    border-radius: 5px;
+    height: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: filter 0.25s;
+}
+.progressBar:hover {
+    filter: brightness(90%);
 }
 
 .video-container {
