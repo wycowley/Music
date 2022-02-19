@@ -19,6 +19,7 @@ const props = defineProps({
 // zltBrEg72Ng
 </script>
 <template>
+    <!-- <p :id="props.videoId">hi</p> -->
     <div class="container">
         <parallax-container>
             <youtube-video :videoId="props.videoId"></youtube-video>

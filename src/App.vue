@@ -4,6 +4,7 @@
 import { ref } from "vue";
 import musicData from "./Data.json";
 import Container from "./components/Container.vue";
+import List from "./components/List.vue";
 
 const videoId = ref("AtwasYkNRlc");
 const data = ref(musicData);
@@ -21,6 +22,7 @@ const data = ref(musicData);
         <h1>— Welcome —</h1>
         <p>I've been playing piano for over 12 years now, and have been teaching for around 4 years at PPA. Here's a timeline of some of the music I have played over my piano journey.</p>
     </div>
+    <list></list>
     <div class="total-container">
         <container v-for="object in data" :key="object.videoId" :videoId="object.videoId" :name="object.name" :description="object.description" :date="object.date"> </container>
     </div>
@@ -48,7 +50,7 @@ const data = ref(musicData);
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    /* text-align: center; */
     /* color: #2c3e50;
     margin-top: 60px; */
 }

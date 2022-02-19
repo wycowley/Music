@@ -9,11 +9,12 @@ const scrollLogic = (evt) => {
 };
 onMounted(() => {
     positionOffset.value = window.scrollY + divcontainer.value.getBoundingClientRect().y;
-    console.log(positionOffset.value);
+    // console.log(positionOffset.value);
+    document.addEventListener("scroll", scrollLogic);
+
     scrollLogic();
-    console.log(divcontainer.value.getBoundingClientRect());
+    // console.log(divcontainer.value.getBoundingClientRect());
 });
-document.addEventListener("scroll", scrollLogic);
 </script>
 <template>
     <div
