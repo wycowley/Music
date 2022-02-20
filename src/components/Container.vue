@@ -1,6 +1,12 @@
 <script setup>
 import ParallaxContainer from "./ParallaxContainer.vue";
 import YoutubeVideo from "./YoutubeVideo.vue";
+import { onMounted, ref } from "vue";
+const emit = defineEmits(["viewed"]);
+
+// set up intersection observer to see which one is viewed right now
+
+const viewbox = ref(null);
 
 const props = defineProps({
     videoId: {
@@ -16,11 +22,25 @@ const props = defineProps({
         type: String,
     },
 });
+
+onMounted(() => {
+    const options = {
+        rootMargin: "0px",
+        threshold: 0.5,
+    };
+    const observer = new IntersectionObserver(observed, options);
+    observer.observe(viewbox.value);
+});
+function observed(entries) {
+    if (entries[0].intersectionRatio > 0.4) {
+        emit("viewed", props.name);
+    }
+}
 // zltBrEg72Ng
 </script>
 <template>
-    <!-- <p :id="props.videoId">hi</p> -->
-    <div class="container">
+    <div :id="props.name"></div>
+    <div class="container" ref="viewbox">
         <parallax-container>
             <youtube-video :videoId="props.videoId"></youtube-video>
         </parallax-container>
@@ -31,7 +51,7 @@ const props = defineProps({
                 <h1>{{ props.name }}</h1>
             </div>
             <div class="description">
-                <h2>{{ props.description }}</h2>
+                <p>{{ props.description }}</p>
             </div>
         </div>
     </div>
@@ -41,10 +61,10 @@ const props = defineProps({
     display: flex;
     flex-direction: row;
     width: calc(100% - 4rem);
-    margin: 2rem;
+    margin: 0 2rem;
     height: 100vh;
-    margin-bottom: 25vh;
     align-items: center;
+    margin-bottom: 25vh;
 }
 .all-text {
     margin-left: 5rem;
@@ -53,6 +73,9 @@ const props = defineProps({
     flex-direction: column;
     justify-content: center;
     width: calc(50% - 5rem);
+}
+.title {
+    text-align: center;
 }
 .title > p {
     font-size: 1.5rem;
@@ -70,7 +93,7 @@ const props = defineProps({
     /* color: #2c3e50; */
     text-align: left;
 }
-.description > h2 {
+.description > p {
     font-size: 1.25rem;
 }
 </style>

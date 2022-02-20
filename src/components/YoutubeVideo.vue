@@ -74,7 +74,7 @@ onMounted(() => {
 </script>
 <template>
     <div class="video-container" :style="{ aspectRatio: props.horizontal ? 16 / 9 : 9 / 16 }">
-        <div ref="video" :id="videoId">Test</div>
+        <div ref="video" :id="videoId">LOADING...</div>
         <div :style="{ backgroundImage: gradient }" class="progressBar" @click="seek"></div>
         <!-- <button @click="changePlay">{{ playing ? "Pause" : "Play" }}</button> -->
     </div>

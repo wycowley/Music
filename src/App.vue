@@ -8,28 +8,51 @@ import List from "./components/List.vue";
 
 const videoId = ref("AtwasYkNRlc");
 const data = ref(musicData);
-
+const focused = ref(null);
 // {
 // "name": "",
 // "description": "",
 // "videoId": "",
 // "date": ""
 // }
+
+// keep track of what element is currently being viewed
+
+function updateSeen(name) {
+    if (name === focused.value) {
+        console.log("yo");
+        focused.value = null;
+    } else {
+        focused.value = name;
+    }
+    console.log(focused);
+}
 </script>
 
 <template>
     <div class="total-container intro">
         <h1>— Welcome —</h1>
         <p>I've been playing piano for over 12 years now, and have been teaching for around 4 years at PPA. Here's a timeline of some of the music I have played over my piano journey.</p>
+        <a :href="'#' + data[0].name">
+            <img src="chevron.png" />
+        </a>
     </div>
-    <list></list>
+    <list :focused="focused"></list>
     <div class="total-container">
-        <container v-for="object in data" :key="object.videoId" :videoId="object.videoId" :name="object.name" :description="object.description" :date="object.date"> </container>
+        <container v-for="object in data" :key="object.videoId" :videoId="object.videoId" :name="object.name" :description="object.description" :date="object.date" @viewed="updateSeen"> </container>
     </div>
 </template>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+
 /*  */
+body {
+    margin: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
 .total-container {
     /* display: flex;
     flex-direction: row; */
@@ -38,16 +61,34 @@ const data = ref(musicData);
 .intro {
     width: 50vw;
     margin-left: 25vw;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20vh;
 }
 .intro > h1 {
     font-size: 4rem;
+    margin: 0;
 }
 .intro > p {
     font-size: 1.5rem;
 }
+.intro img {
+    width: 50px;
+    /* height: 50px; */
+    margin-top: 2rem;
+    transition: transform 0.25s;
+}
+.intro img:hover {
+    transform: translateY(5px);
+}
 
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    /* font-family: Avenir, Helvetica, Arial, sans-serif; */
+    font-family: "Poppins", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* text-align: center; */

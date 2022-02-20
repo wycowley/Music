@@ -6,13 +6,79 @@
         "date": "August 2021 to January 2022"
     },
     {
+        "name": "Liebesleid",
+        "description": "I love this piece, and although I never perfected it in the way I would've liked to, I'm really proud of the parts that I did do!",
+        "videoId": "rWFgvW5x1gg",
+        "date": "January 2021 to August 2021"
+    },
+    {
+        "name": "Songs without Words",
+        "description": "I performed this for our online formal recital.  Songs without Words is a collection of Mendelssohn pieces, and this is one of the around 50 pieces that are in this collection!",
+        "videoId": "rWFgvW5x1gg",
+        "date": "September 2020 to January 2021"
+    },
+    {
+        "name": "Doctor Gradus Ad Parnassum",
+        "description": "Another one of Debussy's Children's Corner pieces, I love the understated melody of this piece - though the ending isn't my favorite.",
+        "videoId": "rWFgvW5x1gg",
+        "date": "August 2020 to September 2020"
+    },
+    {
+        "name": "All Of Me",
+        "description": "One of my all time favorite pieces, this one has some fun quirks - like banging the piano with your entire arm!",
+        "videoId": "rWFgvW5x1gg",
+        "date": "June 2020 to September 2020"
+    },
+    {
+        "name": "Sonata in A-flat Major K. 127",
+        "description": "I started learning this right at the beginning of the pandemic, when we were still very much locked down.  I was so thankful for piano during this time, and learned many pieces during this period.",
+        "videoId": "rWFgvW5x1gg",
+        "date": "April 2020 to May 2020"
+    },
+    {
+        "name": "Golliwogg's Cakewalk",
+        "description": "This playful piece was easy to learn and fun to play!  It is one of Debussy's Children's Corner pieces.",
+        "videoId": "rWFgvW5x1gg",
+        "date": "April 2020"
+    },
+    {
+        "name": "Liebestraum",
+        "description": "Liebestraum was an incredibly difficult piece.  The cadenzas and middle half of the piece were a slog to get through, but I'm glad I did!",
+        "videoId": "rWFgvW5x1gg",
+        "date": "January 2020 to June 2020"
+    },
+    {
+        "name": "Wedding Song at Troldhaugen",
+        "description": "I was so excited when I found this piece on Youtube!  It's one that I come back to time after time, and still enjoy each time I play.",
+        "videoId": "rWFgvW5x1gg",
+        "date": "January 2020 to April 2020"
+    },
+    {
         "name": "Sonata Pathetique",
         "description": "This is the first movement of Sonata Pathetique by Beethoven, learned during Sophomore year of High School.  I still love the challenge of this piece!",
         "videoId": "zltBrEg72Ng",
         "date": "September 2019 to January 2020"
     },
     {
-        "name": "Bach Invention in C Minor",
+        "name": "Nocturne Opus 7 No. 1",
+        "description": "I departed from my normal baroque or classical music to play this piece, one of Chopin's most famous nocturnes.",
+        "videoId": "zltBrEg72Ng",
+        "date": "May 2019 to September 2019"
+    },
+    {
+        "name": "Aufschwung",
+        "description": "Even now, I seriously enjoy this piece.  It was a challenging one to learn, but I loved the dual drama and beauty!",
+        "videoId": "zltBrEg72Ng",
+        "date": "September 2018 to January 2019"
+    },
+    {
+        "name": "Waterfall",
+        "description": "Written by Jon Schmidt, Waterfall was an incredibly dramatic and fun piece to play!  Octave runs and funky accents made it a tricky one!",
+        "videoId": "zltBrEg72Ng",
+        "date": "September 2017 to January 2018"
+    },
+    {
+        "name": "Bach Invention in C Major",
         "description": "IDK what to put here",
         "videoId": "DEQ65OATGk0",
         "date": "January 2017 to May 2017"
@@ -40,5 +106,29 @@
         "description": "A duet with my best friend Parker that we played in Church.",
         "videoId": "7nHqys-FS-8",
         "date": "August 2015 to October 2015"
+    },
+    {
+        "name": "Dragonfly Scherzo",
+        "description": "A very high energy piece that I played over 7 years ago!",
+        "videoId": "7nHqys-FS-8",
+        "date": "January 2015"
+    },
+    {
+        "name": "Concerto",
+        "description": "This was performed at my academy's Ensemble Recital with my classmates Parker, Grace, and Remi.",
+        "videoId": "7nHqys-FS-8",
+        "date": "August 2014"
+    },
+    {
+        "name": "Sonatina in C by Clementi",
+        "description": "I played the first two movements of this piece at one of our recitals.",
+        "videoId": "7nHqys-FS-8",
+        "date": "January 2014"
+    },
+    {
+        "name": "Sakura",
+        "description": "We all start from somewhere, and I started with Sakura.  I wish I had more videos from my earliest years of piano, but at least I have my first!",
+        "videoId": "7nHqys-FS-8",
+        "date": "2010"
     }
 ]
