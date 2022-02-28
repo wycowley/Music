@@ -25,11 +25,13 @@ function onYouTubeIframeAPIReady() {
             modestbranding: 1,
             disablekb: 1,
             rel: 0,
+            // origin: "http://localhost:3000",
         },
         events: {
             onReady: onPlayerReady,
             onStateChange: onPlayerStateChange,
         },
+        // host: "http://www.youtube.com",
     });
     player.value = test;
 }
@@ -56,16 +58,16 @@ const gradient = computed(() => {
 //     }
 // }
 function checkProgress() {
-    console.log(player.value.getCurrentTime());
+    // console.log(player.value.getCurrentTime());
     progress.value = (player.value.getCurrentTime() / player.value.getDuration()) * 100;
 }
 function seek(e) {
     let target = e.target;
-    console.log(target.getBoundingClientRect());
+    // console.log(target.getBoundingClientRect());
     let percent = (e.clientX - target.getBoundingClientRect().x) / target.getBoundingClientRect().width;
     player.value.seekTo(player.value.getDuration() * percent);
     progress.value = percent * 100;
-    console.log(percent);
+    // console.log(percent);
 }
 
 onMounted(() => {
