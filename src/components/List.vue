@@ -75,8 +75,11 @@ a:hover > span {
     transition: transform 0.25s;
     /* margin-top: 2rem; */
 }
-.chevron:hover {
+.flip .chevron:hover {
     transform: translateX(-5px);
+}
+.noflip .chevron:hover {
+    transform: translateX(5px);
 }
 .chevron-container {
     display: flex;
@@ -93,10 +96,10 @@ a:hover > span {
 }
 /* .flip {
     transform: rotate(90deg);
-}
-.noflip {
-    transform: rotate(270deg);
 } */
+.noflip {
+    transform: translateX(-5px);
+}
 
 .individual-link {
     /* width: fit-content; */
