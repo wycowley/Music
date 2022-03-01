@@ -41,6 +41,7 @@ function updateSeen(name) {
     <div class="total-container">
         <container v-for="object in data" :key="object.videoId" :videoId="object.videoId" :name="object.name" :description="object.description" :date="object.date" @viewed="updateSeen"> </container>
     </div>
+    <!-- <button class="pause-container">||</button> -->
 </template>
 
 <style>
@@ -53,10 +54,23 @@ body {
 html {
     scroll-behavior: smooth;
 }
+/* .pause-container {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    background-color: rgb(240, 240, 240);
+    border: 0;
+    outline: 0;
+    border-radius: 5rem;
+    cursor: pointer;
+    padding: 1rem;
+    width: 3rem;
+    height: 3rem;
+} */
 .total-container {
     /* display: flex;
     flex-direction: row; */
-    width: 100vw;
+    width: 100%;
 }
 .intro {
     width: 50vw;

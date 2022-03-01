@@ -96,4 +96,12 @@ function observed(entries) {
 .description > p {
     font-size: 1.25rem;
 }
+/* @media screen and (max-width: 1080px) {
+    .container {
+        flex-direction: column;
+    }
+    .all-text {
+        width: 100%;
+    }
+} */
 </style>
