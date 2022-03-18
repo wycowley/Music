@@ -107,10 +107,16 @@ a:hover > span {
 }
 .link-container {
     position: fixed;
-    right: 2rem;
-    top: 2rem;
+    right: 0rem;
+    top: 0rem;
+    padding: 2rem 2rem;
+    padding-left: 0rem;
     /* background-color: white; */
     /* height: 50vh;
     overflow: scroll; */
+    overflow: scroll;
+    height: calc(100% - 4rem);
+    background-color: hsla(0, 0%, 100%, 0.5);
+    backdrop-filter: blur(5px);
 }
 </style>
