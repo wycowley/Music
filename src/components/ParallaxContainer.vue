@@ -23,7 +23,7 @@ onMounted(() => {
 <template>
     <div
         :style="{
-            top: parallaxOffset + 'px',
+            transform: `translateY(${parallaxOffset}px)`,
         }"
         ref="divcontainer"
     >
