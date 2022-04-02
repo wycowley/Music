@@ -7,7 +7,7 @@
     },
     {
         "name": "Valse Caressante",
-        "description": "I had a blast learning this Respighi Waltz!",
+        "description": "I had a blast learning this Respighi Waltz!  It wasn't a super tricky piece, and I loved the fluid beat.",
         "videoId": "-Sgmnh4qp8g",
         "date": "November 2021 to January 2022"
     },
@@ -19,9 +19,15 @@
     },
     {
         "name": "Liebesleid",
-        "description": "I love this piece, and although I never perfected it, I'm really proud of the parts that I did learn and perfect!",
+        "description": "I love this piece, and although I never perfected it, I'm really proud of the parts that I did learn!",
         "videoId": "rWFgvW5x1gg",
         "date": "January 2021 to August 2021"
+    },
+    {
+        "name": "Harry Potter Medley",
+        "description": "This collection of Harry Potter Songs is over 20 pages long and takes around 15 minutes to play!  I learned them slowly and in fragments.",
+        "videoId": "R6uoqbH12p8",
+        "date": "October 2020 to March 2021"
     },
     {
         "name": "Songs without Words",

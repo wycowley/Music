@@ -20,19 +20,17 @@ const focused = ref(null);
 
 function updateSeen(name) {
     if (name === focused.value) {
-        console.log("yo");
         focused.value = null;
     } else {
         focused.value = name;
     }
-    console.log(focused);
 }
 </script>
 
 <template>
     <div class="total-container intro">
         <h1>— Welcome —</h1>
-        <p>I've been playing piano for over 12 years now, and have been teaching for around 4 years at PPA. Here's a timeline of some of the music I have played over my piano journey.</p>
+        <p>I've been playing piano since I was 5, and have been teaching for around 4 years at <a href="https://www.peeryacademy.com/" style="color: black">PPA</a>. Here's a collection of some of the music I have played over my piano journey.</p>
         <a :href="'#' + data[0].name">
             <img src="chevron.png" />
         </a>
