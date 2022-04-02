@@ -35,7 +35,12 @@
         "videoId": "3s1FP-k0moc",
         "date": "August 2020 to September 2020"
     },
-
+    {
+        "name": "All Of Me",
+        "description": "One of my all time favorite pieces, this one has some fun quirks - like banging the piano with your entire arm!",
+        "videoId": "rWFgvW5x1gg",
+        "date": "June 2020 to September 2020"
+    },
     {
         "name": "Sonata in A-flat Major K. 127",
         "description": "I started learning this right at the beginning of the pandemic, when we were still very much locked down.  I was so thankful for piano during this time, and learned many pieces during this period.",
@@ -96,7 +101,12 @@
         "videoId": "INJP3tGaxuU",
         "date": "June 2016 to January 2017"
     },
-
+    {
+        "name": "Scherzo in C Major",
+        "description": "IDK",
+        "videoId": "jcrKEQ1vEsI",
+        "date": "March 2016"
+    },
     {
         "name": "Bach Partita",
         "description": "This was one of the first long pieces that I learned which spanned multiple movements (Minuet 1, 2, and Gigue).",

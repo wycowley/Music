@@ -60,10 +60,12 @@ function observed(entries) {
 .container {
     display: flex;
     flex-direction: row;
+
     width: calc(100% - 4rem);
     margin: 0 2rem;
     height: 100vh;
     align-items: center;
+    justify-content: center;
     margin-bottom: 25vh;
 }
 .all-text {

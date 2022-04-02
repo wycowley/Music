@@ -114,7 +114,7 @@ a:hover > span {
     /* background-color: white; */
     /* height: 50vh;
     overflow: scroll; */
-    overflow: scroll;
+    overflow: auto;
     height: calc(100% - 4rem);
     background-color: hsla(0, 0%, 100%, 0.5);
     backdrop-filter: blur(5px);
