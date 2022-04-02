@@ -19,7 +19,7 @@ function switchCollapse() {
     <div class="link-container">
         <div class="chevron-container">
             <button @click="switchCollapse" :class="collapse ? 'flip' : 'noflip'">
-                <img src="hamburger.svg" class="chevron" />
+                <img src="../assets/hamburger.svg" class="chevron" />
             </button>
         </div>
         <Transition>

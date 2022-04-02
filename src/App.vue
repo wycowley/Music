@@ -32,7 +32,7 @@ function updateSeen(name) {
         <h1>— Welcome —</h1>
         <p>I've been playing piano since I was 5, and have been teaching for around 4 years at <a href="https://www.peeryacademy.com/" style="color: black">PPA</a>. Here's a collection of some of the music I have played over my piano journey.</p>
         <a :href="'#' + data[0].name">
-            <img src="chevron.png" />
+            <img src="./assets/chevron.png" />
         </a>
     </div>
     <list :focused="focused"></list>
