@@ -25,7 +25,7 @@ function onYouTubeIframeAPIReady() {
             modestbranding: 1,
             disablekb: 1,
             rel: 0,
-            // origin: "http://localhost:3000",
+            origin: "http://localhost:3000",
         },
         events: {
             onReady: onPlayerReady,
