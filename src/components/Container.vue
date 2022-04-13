@@ -41,9 +41,9 @@ function observed(entries) {
 <template>
     <div :id="props.name"></div>
     <div class="container" ref="viewbox">
-        <parallax-container>
-            <youtube-video :videoId="props.videoId"></youtube-video>
-        </parallax-container>
+        <!-- <parallax-container> -->
+        <youtube-video :videoId="props.videoId"></youtube-video>
+        <!-- </parallax-container> -->
         <!-- All Text Elements -->
         <div class="all-text">
             <div class="title">

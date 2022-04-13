@@ -16,24 +16,29 @@ const playing = ref(false);
 const progress = ref(0);
 const intervalReference = ref(null);
 function onYouTubeIframeAPIReady() {
-    var test;
-    test = new YT.Player(props.videoId, {
-        videoId: props.videoId,
-        playerVars: {
-            playsinline: 1,
-            controls: 0,
-            modestbranding: 1,
-            disablekb: 1,
-            rel: 0,
-            origin: "http://localhost:3000",
-        },
-        events: {
-            onReady: onPlayerReady,
-            onStateChange: onPlayerStateChange,
-        },
-        // host: "http://www.youtube.com",
-    });
-    player.value = test;
+    try {
+        var test;
+        test = new YT.Player(props.videoId, {
+            videoId: props.videoId,
+            playerVars: {
+                playsinline: 1,
+                controls: 0,
+                modestbranding: 1,
+                disablekb: 1,
+                rel: 0,
+                origin: "http://localhost:3000",
+            },
+            events: {
+                onReady: onPlayerReady,
+                onStateChange: onPlayerStateChange,
+            },
+            // host: "http://www.youtube.com",
+        });
+        player.value = test;
+    } catch (error) {
+        console.log("Youtube Iframe not ready yet...");
+        setTimeout(onYouTubeIframeAPIReady, 1000);
+    }
 }
 function onPlayerReady() {}
 function onPlayerStateChange(event) {

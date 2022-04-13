@@ -41,11 +41,9 @@ function switchCollapse() {
     transition: all 0.5s;
 }
 .v-leave-to * {
-    transform: translateX(3rem);
     opacity: 0;
 }
 .v-enter-from * {
-    transform: translateX(3rem);
     opacity: 0;
 }
 a {
