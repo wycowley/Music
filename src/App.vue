@@ -29,15 +29,13 @@ function updateSeen(name) {
 </script>
 
 <template>
-    <parallax-container>
-        <div class="total-container intro">
-            <h1>— Welcome —</h1>
-            <p>I've been playing piano since I was 5, and have been teaching for around 4 years at <a href="https://www.peeryacademy.com/" style="color: black">PPA</a>. Here's a collection of some of the music I have played over my piano journey.</p>
-            <a :href="'#' + data[0].name">
-                <img src="./assets/chevron.png" />
-            </a>
-        </div>
-    </parallax-container>
+    <div class="total-container intro">
+        <h1>— Welcome —</h1>
+        <p>I've been playing piano since I was 5, and have been teaching for around 4 years at <a href="https://www.peeryacademy.com/" style="color: black">PPA</a>. Here's a collection of some of the music I have played over my piano journey.</p>
+        <a :href="'#' + data[0].name">
+            <img src="./assets/chevron.png" />
+        </a>
+    </div>
     <list :focused="focused"></list>
     <div class="total-container">
         <container v-for="object in data" :key="object.videoId" :videoId="object.videoId" :name="object.name" :description="object.description" :date="object.date" @viewed="updateSeen"> </container>
