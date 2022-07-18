@@ -7,7 +7,7 @@ const emit = defineEmits(["viewed"]);
 // set up intersection observer to see which one is viewed right now
 
 const viewbox = ref(null);
-
+const seen = ref(false);
 const props = defineProps({
     videoId: {
         type: String,
@@ -34,13 +34,13 @@ onMounted(() => {
 function observed(entries) {
     if (entries[0].intersectionRatio > 0.4) {
         emit("viewed", props.name);
+        seen.value = true;
     }
 }
 // zltBrEg72Ng
 </script>
 <template>
-    <div :id="props.name"></div>
-    <div class="container" ref="viewbox">
+    <div :class="'container ' + (seen ? 'fade-in' : '')" ref="viewbox" :id="'container' + props.videoId">
         <!-- <parallax-container> -->
         <youtube-video :videoId="props.videoId"></youtube-video>
         <!-- </parallax-container> -->
@@ -57,6 +57,27 @@ function observed(entries) {
     </div>
 </template>
 <style scoped>
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column !important;
+
+        height: auto !important;
+        margin-bottom: 10rem !important;
+    }
+    .all-text {
+        margin-left: 0 !important;
+        width: calc(100% - 4rem) !important;
+        height: auto !important;
+        margin-top: 3rem;
+    }
+    .title > h1 {
+        font-size: 1.75rem !important;
+    }
+    .title > p {
+        font-size: 1.25rem !important;
+    }
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -67,6 +88,20 @@ function observed(entries) {
     align-items: center;
     justify-content: center;
     margin-bottom: 25vh;
+
+    opacity: 0;
+}
+.fade-in {
+    opacity: 1;
+    animation: fadeIn 0.25s;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 .all-text {
     margin-left: 5rem;

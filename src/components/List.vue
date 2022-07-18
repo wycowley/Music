@@ -4,19 +4,26 @@ import musicData from "../Data.json";
 
 const titles = ref(musicData);
 const collapse = ref(true);
+
 const props = defineProps({
     focused: {
         type: String,
     },
 });
 const { focused } = toRefs(props);
-//
 function switchCollapse() {
     collapse.value = !collapse.value;
 }
+function clickTitle(videoId) {
+    console.log(videoId);
+    document.getElementById("container" + videoId).scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+    });
+}
 </script>
 <template>
-    <div class="link-container">
+    <div class="link-container" :class="collapse ? '' : 'backdrop'">
         <div class="chevron-container">
             <button @click="switchCollapse" :class="collapse ? 'flip' : 'noflip'">
                 <img src="../assets/hamburger.svg" class="chevron" />
@@ -25,7 +32,7 @@ function switchCollapse() {
         <Transition>
             <div v-if="!collapse">
                 <div v-for="title in titles" :key="title.videoId" class="individual-link">
-                    <a :href="'#' + title.name" :class="title.name === focused ? 'focused' : ''"><span>—</span>{{ " " + title.name }}</a>
+                    <button :class="title.name === focused ? 'focused' : ''" @click="clickTitle(title.videoId)"><span>—</span>{{ " " + title.name }}</button>
                 </div>
             </div>
         </Transition>
@@ -46,19 +53,23 @@ function switchCollapse() {
 .v-enter-from * {
     opacity: 0;
 }
-a {
+button {
     text-align: right;
     font-size: 1.25rem;
-    font-weight: normal;
+    font-weight: 400;
     color: initial;
     text-decoration: none;
     transition: all 0.25s;
+    border: none;
+    background-color: transparent;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
 }
-a > span {
+button > span {
     opacity: 0;
     transition: opacity 0.25s;
 }
-a:hover > span {
+button:hover > span {
     opacity: 1;
 }
 .focused {
@@ -114,7 +125,18 @@ a:hover > span {
     overflow: scroll; */
     overflow: auto;
     height: calc(100% - 4rem);
+}
+.backdrop {
     background-color: hsla(0, 0%, 100%, 0.5);
     backdrop-filter: blur(5px);
+}
+@media screen and (max-width: 768px) {
+    .backdrop {
+        background-color: hsla(0, 0%, 100%, 0.75);
+    }
+    .link-container {
+        padding: 0.5rem 0.5rem;
+        height: calc(100% - 1rem);
+    }
 }
 </style>

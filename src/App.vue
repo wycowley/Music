@@ -10,6 +10,7 @@ import ParallaxContainer from "./components/ParallaxContainer.vue";
 const videoId = ref("AtwasYkNRlc");
 const data = ref(musicData);
 const focused = ref(null);
+const showIntro = ref(false);
 // {
 // "name": "",
 // "description": "",
@@ -26,15 +27,29 @@ function updateSeen(name) {
         focused.value = name;
     }
 }
+function travelToFirst() {
+    document.getElementById("container" + data.value[0].videoId).scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+    });
+}
+setTimeout(() => {
+    showIntro.value = true;
+    console.log("Hello");
+}, 1000);
 </script>
 
 <template>
     <div class="total-container intro">
-        <h1>— Welcome —</h1>
-        <p>I've been playing piano since I was 5, and have been teaching for around 4 years at <a href="https://www.peeryacademy.com/" style="color: black">PPA</a>. Here's a collection of some of the music I have played over my piano journey.</p>
-        <a :href="'#' + data[0].name">
-            <img src="./assets/chevron.png" />
-        </a>
+        <transition name="fade">
+            <div v-show="showIntro">
+                <h1>— Welcome —</h1>
+                <p>I've been playing piano since I was 5, and have been teaching for around 4 years at <a href="https://www.peeryacademy.com/" style="color: black">PPA</a>. Here's a collection of some of the music I have played over my piano journey.</p>
+                <button :href="'#' + data[0].name" @click="travelToFirst">
+                    <img src="./assets/chevron.png" />
+                </button>
+            </div>
+        </transition>
     </div>
     <list :focused="focused"></list>
     <div class="total-container">
@@ -47,6 +62,16 @@ function updateSeen(name) {
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
 
 /*  */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
 body {
     margin: 0;
 }
@@ -82,18 +107,23 @@ html {
     align-items: center;
     margin-bottom: 20vh;
 }
-.intro > h1 {
+.intro > * > h1 {
     font-size: 4rem;
     margin: 0;
 }
-.intro > p {
+.intro > * > p {
     font-size: 1.5rem;
+}
+.intro > * > button {
+    background-color: transparent;
+    border: none;
 }
 .intro img {
     width: 50px;
     /* height: 50px; */
     margin-top: 2rem;
     transition: transform 0.25s;
+    cursor: pointer;
 }
 .intro img:hover {
     transform: translateY(5px);
@@ -114,5 +144,14 @@ iframe {
     background-color: white;
     border-radius: 5px;
     cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+    .intro > * > h1 {
+        font-size: 2.5rem !important;
+    }
+    .intro {
+        width: calc(100% - 3rem) !important;
+        margin-left: 1.5rem !important;
+    }
 }
 </style>

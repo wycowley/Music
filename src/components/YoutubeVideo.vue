@@ -26,7 +26,6 @@ function onYouTubeIframeAPIReady() {
                 modestbranding: 1,
                 disablekb: 1,
                 rel: 0,
-                origin: "http://localhost:3000",
             },
             events: {
                 onReady: onPlayerReady,
@@ -98,8 +97,8 @@ onMounted(() => {
 }
 
 .video-container {
-    width: 25vw;
+    width: clamp(250px, 25vw, 600px);
     aspect-ratio: 9/16;
-    height: auto;
+    /* height: auto; */
 }
 </style>
