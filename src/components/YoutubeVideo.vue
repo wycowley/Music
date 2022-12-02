@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed, toRefs, watch } from "vue";
-import { currentVideo, changePlaying, changeVideo } from "../assets/PlayerController.js";
+import { idFocused, playingFocused, changePlaying, changeVideo } from "../assets/PlayerController.js";
 const props = defineProps({
     videoId: {
         type: String,
@@ -17,7 +17,6 @@ const { videoId, horizontal, seen } = toRefs(props);
 const video = ref(null);
 
 const player = ref();
-const playing = ref(false);
 const progress = ref(0);
 const intervalReference = ref(null);
 
@@ -26,11 +25,13 @@ watch(seen, () => {
         startLoadingVideo();
     }
 });
-watch(currentVideo, () => {
-    console.log("current video changed");
-    if (currentVideo.value.name == videoId.value) {
-        if (playing.value == false) {
-            player.value.stopVideo();
+watch(playingFocused, (newPlaying) => {
+    if (videoId.value == idFocused.value) {
+        if (newPlaying) {
+            console.log("Playing video");
+            player.value.playVideo();
+        } else {
+            player.value.pauseVideo();
         }
     }
 });
@@ -60,39 +61,28 @@ function startLoadingVideo() {
 }
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING) {
-        changePlaying(true);
         changeVideo(videoId.value);
+        changePlaying(true);
         intervalReference.value = setInterval(() => {
             checkProgress();
         }, 1000);
     } else {
         clearInterval(intervalReference.value);
+        changePlaying(false);
     }
 }
 const gradient = computed(() => {
     return `linear-gradient(to right, #000000 0%, #000000 ${progress.value}%, #f0f0f0 ${progress.value}%, #f0f0f0 100%)`;
 });
-// function changePlay() {
-//     if (playing.value == true) {
-//         player.value.pauseVideo();
-//         playing.value = false;
-//     } else {
-//         player.value.playVideo();
-//         playing.value = true;
-//     }
-// }
 function checkProgress() {
-    // console.log(player.value.getCurrentTime());
     progress.value = (player.value.getCurrentTime() / player.value.getDuration()) * 100;
 }
 function onPlayerReady() {}
 function seek(e) {
     let target = e.target;
-    // console.log(target.getBoundingClientRect());
     let percent = (e.clientX - target.getBoundingClientRect().x) / target.getBoundingClientRect().width;
     player.value.seekTo(player.value.getDuration() * percent);
     progress.value = percent * 100;
-    // console.log(percent);
 }
 </script>
 <template>

@@ -30,7 +30,7 @@ function clickTitle(videoId) {
             </button>
         </div>
         <Transition>
-            <div v-if="!collapse">
+            <div v-if="!collapse" class="only-links-container">
                 <div v-for="title in titles" :key="title.videoId" class="individual-link">
                     <button :class="title.name === focused ? 'focused' : ''" @click="clickTitle(title.videoId)"><span>—</span>{{ " " + title.name }}</button>
                 </div>
@@ -120,11 +120,11 @@ button:hover > span {
     top: 0rem;
     padding: 2rem 2rem;
     padding-left: 0rem;
-    /* background-color: white; */
-    /* height: 50vh;
-    overflow: scroll; */
-    overflow: auto;
-    height: calc(100% - 4rem);
+
+    overflow: hidden;
+    height: calc(100% - 8rem);
+    padding-bottom: 6rem;
+    /* width: calc(100% - 2rem); */
 }
 .backdrop {
     background-color: hsla(0, 0%, 100%, 0.5);
@@ -136,7 +136,12 @@ button:hover > span {
     }
     .link-container {
         padding: 0.5rem 0.5rem;
-        height: calc(100% - 1rem);
+        height: calc(100% - 3rem);
+        padding-bottom: 2.5rem;
     }
+}
+.only-links-container {
+    overflow-y: auto;
+    height: calc(100% - 4rem);
 }
 </style>
