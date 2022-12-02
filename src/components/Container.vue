@@ -1,5 +1,4 @@
 <script setup>
-import ParallaxContainer from "./ParallaxContainer.vue";
 import YoutubeVideo from "./YoutubeVideo.vue";
 import { onMounted, ref } from "vue";
 const emit = defineEmits(["viewed"]);
@@ -32,19 +31,18 @@ onMounted(() => {
     observer.observe(viewbox.value);
 });
 function observed(entries) {
+    if (entries[0].intersectionRatio > 0.2) {
+        seen.value = true;
+    }
     if (entries[0].intersectionRatio > 0.4) {
         emit("viewed", props.name);
-        seen.value = true;
     }
 }
 // zltBrEg72Ng
 </script>
 <template>
     <div :class="'container ' + (seen ? 'fade-in' : '')" ref="viewbox" :id="'container' + props.videoId">
-        <!-- <parallax-container> -->
-        <youtube-video :videoId="props.videoId"></youtube-video>
-        <!-- </parallax-container> -->
-        <!-- All Text Elements -->
+        <youtube-video :videoId="props.videoId" :seen="seen"></youtube-video>
         <div class="all-text">
             <div class="title">
                 <p>— {{ props.date }} —</p>
@@ -94,6 +92,7 @@ function observed(entries) {
 .fade-in {
     opacity: 1;
     animation: fadeIn 0.25s;
+    animation-delay: 0.5s;
 }
 @keyframes fadeIn {
     from {

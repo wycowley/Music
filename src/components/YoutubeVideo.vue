@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted, computed } from "vue";
-
+import { ref, onMounted, computed, toRefs, watch } from "vue";
+import { currentVideo, changePlaying, changeVideo } from "../assets/PlayerController.js";
 const props = defineProps({
     videoId: {
         type: String,
@@ -8,18 +8,37 @@ const props = defineProps({
     horizontal: {
         type: Boolean,
     },
+    seen: {
+        type: Boolean,
+    },
 });
+
+const { videoId, horizontal, seen } = toRefs(props);
 const video = ref(null);
 
 const player = ref();
 const playing = ref(false);
 const progress = ref(0);
 const intervalReference = ref(null);
-function onYouTubeIframeAPIReady() {
+
+watch(seen, () => {
+    if (seen.value) {
+        startLoadingVideo();
+    }
+});
+watch(currentVideo, () => {
+    console.log("current video changed");
+    if (currentVideo.value.name == videoId.value) {
+        if (playing.value == false) {
+            player.value.stopVideo();
+        }
+    }
+});
+function startLoadingVideo() {
     try {
         var test;
-        test = new YT.Player(props.videoId, {
-            videoId: props.videoId,
+        test = new YT.Player(videoId.value, {
+            videoId: videoId.value,
             playerVars: {
                 playsinline: 1,
                 controls: 0,
@@ -31,17 +50,18 @@ function onYouTubeIframeAPIReady() {
                 onReady: onPlayerReady,
                 onStateChange: onPlayerStateChange,
             },
-            // host: "http://www.youtube.com",
         });
         player.value = test;
     } catch (error) {
         console.log("Youtube Iframe not ready yet...");
-        setTimeout(onYouTubeIframeAPIReady, 1000);
+        console.log(error);
+        setTimeout(startLoadingVideo, 1000);
     }
 }
-function onPlayerReady() {}
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING) {
+        changePlaying(true);
+        changeVideo(videoId.value);
         intervalReference.value = setInterval(() => {
             checkProgress();
         }, 1000);
@@ -65,6 +85,7 @@ function checkProgress() {
     // console.log(player.value.getCurrentTime());
     progress.value = (player.value.getCurrentTime() / player.value.getDuration()) * 100;
 }
+function onPlayerReady() {}
 function seek(e) {
     let target = e.target;
     // console.log(target.getBoundingClientRect());
@@ -73,13 +94,9 @@ function seek(e) {
     progress.value = percent * 100;
     // console.log(percent);
 }
-
-onMounted(() => {
-    onYouTubeIframeAPIReady();
-});
 </script>
 <template>
-    <div class="video-container" :style="{ aspectRatio: props.horizontal ? 16 / 9 : 9 / 16 }">
+    <div class="video-container" :style="{ aspectRatio: horizontal ? 16 / 9 : 9 / 16 }">
         <div ref="video" :id="videoId" :style="{ backgroundColor: 'rgb(240,240,240)' }">LOADING...</div>
         <div :style="{ backgroundImage: gradient }" class="progressBar" @click="seek"></div>
         <!-- <button @click="changePlay">{{ playing ? "Pause" : "Play" }}</button> -->

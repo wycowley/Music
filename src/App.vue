@@ -5,18 +5,12 @@ import { ref } from "vue";
 import musicData from "./Data.json";
 import Container from "./components/Container.vue";
 import List from "./components/List.vue";
-import ParallaxContainer from "./components/ParallaxContainer.vue";
+import PlayerPill from "./components/PlayerPill.vue";
 
 const videoId = ref("AtwasYkNRlc");
 const data = ref(musicData);
 const focused = ref(null);
 const showIntro = ref(false);
-// {
-// "name": "",
-// "description": "",
-// "videoId": "",
-// "date": ""
-// }
 
 // keep track of what element is currently being viewed
 
@@ -40,6 +34,7 @@ setTimeout(() => {
 </script>
 
 <template>
+    <player-pill></player-pill>
     <div class="total-container intro">
         <transition name="fade">
             <div v-show="showIntro">
